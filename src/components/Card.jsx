@@ -5,7 +5,7 @@ export default function Card({ image, title, handleClick }) {
 
   return (
     <div className="card" onClick={handleClick}>
-      {image}
+      <img src={image} alt="title" />
       <h3 className="cardTitle" >
          {title}
       </h3>

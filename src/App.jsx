@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './App.css'
+import CardDeck from './components/CardDeck';
 
 function App() {
   const [score, setScore] = useState(0);
@@ -18,6 +19,9 @@ function App() {
           <h3>High Score: {highScore}</h3>
         </div>
       </header>
+      <main>
+        <CardDeck></CardDeck>
+      </main>
     </>
   )
 }
