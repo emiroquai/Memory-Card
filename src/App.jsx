@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import './App.css'
 import CardDeck from './components/CardDeck';
 
 function App() {
@@ -23,10 +22,13 @@ function App() {
   return (
     <>
       <header>
-        <h1>Memory Game</h1>
+        <div className="headerLeft">
+          <h1 className="gameTitle">Memory Remains</h1>
+          <h3>Get points by clicking on a cat but don&apos;t click on any more than once!</h3>
+        </div>
         <div className="scoreBoard">
-          <h3>Score: {score}</h3>
-          <h3>High Score: {highScore}</h3>
+          <h2>Score: {score}</h2>
+          <h2>High Score: {highScore}</h2>
         </div>
       </header>
       <main>
