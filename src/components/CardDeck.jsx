@@ -9,7 +9,7 @@ export default function CardDeck({ incrementScore, resetScore }) {
   const apiKey = "mZZWYUXt6JImAnzXnL8WrBoayZqOH26u";
   
   async function fetchCatGifs(apiKey, count = 10) {
-    const baseUrl = "http://api.giphy.com/v1/gifs/";
+    const baseUrl = "https://api.giphy.com/v1/gifs/";
     const endpoint = "random";
     const tag = "cat";
 
