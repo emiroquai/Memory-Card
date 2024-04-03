@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 import CardDeck from './components/CardDeck';
 
@@ -7,8 +7,14 @@ function App() {
   const [highScore, setHighScore] = useState(0);
 
   const incrementScore = () => {
-		setScore(() => score + 1);
+		setScore(score + 1);
   }
+  
+  useEffect(() => {
+    if (score > highScore) {
+        setHighScore(score);
+    }
+  }, [score, highScore]);
 
   return (
     <>
@@ -20,7 +26,10 @@ function App() {
         </div>
       </header>
       <main>
-        <CardDeck></CardDeck>
+        <CardDeck
+          incrementScore={incrementScore}
+       />
+        
       </main>
     </>
   )

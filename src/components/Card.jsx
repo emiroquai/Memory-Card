@@ -1,19 +1,14 @@
 /* eslint-disable react/prop-types */
 import '../styles/Card.css'
 
-export default function Card({ image, title, handleClick }) {
+export default function Card({ image, handleClick }) {
 
   return (
     <div 
       className="card" 
       onClick={handleClick}
-      style={{ 
-      backgroundImage: `url(${image})`,
-      }}
+      style={{backgroundImage: `url(${image})`}}
     >
-      <h3 className="cardTitle" >
-         {title}
-      </h3>
     </div>
   )
 
