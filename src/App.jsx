@@ -9,6 +9,10 @@ function App() {
   const incrementScore = () => {
 		setScore(score + 1);
   }
+
+  const resetScore = () => {
+    setScore(0);
+  }
   
   useEffect(() => {
     if (score > highScore) {
@@ -28,6 +32,7 @@ function App() {
       <main>
         <CardDeck
           incrementScore={incrementScore}
+          resetScore={resetScore}
        />
         
       </main>

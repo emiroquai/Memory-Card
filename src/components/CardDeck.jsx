@@ -3,8 +3,9 @@ import { useState, useEffect } from 'react';
 import '../styles/CardDeck.css';
 import Card from './Card';
 
-export default function CardDeck({ incrementScore }) {
+export default function CardDeck({ incrementScore, resetScore }) {
   const [catGifs, setCatGifs] = useState([]);
+  const [reset, setReset] = useState(false);
   const apiKey = "mZZWYUXt6JImAnzXnL8WrBoayZqOH26u";
   
   async function fetchCatGifs(apiKey, count = 9) {
@@ -25,11 +26,35 @@ export default function CardDeck({ incrementScore }) {
       }
     }
     setCatGifs(cats);
+
+  }
+
+  const shuffleArray = array => {
+    const shuffledArray = [...array]; 
+    for (let i = shuffledArray.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      const temp = shuffledArray[i];
+      shuffledArray[i] = shuffledArray[j];
+      shuffledArray[j] = temp;
+    } 
+    return shuffledArray; 
+  };
+
+  const playTurn = (cat) => {
+    if (!cat.isClicked) {
+      incrementScore();
+      cat.isClicked = true;
+      let shuffledCats = shuffleArray(catGifs);
+      setCatGifs(shuffledCats);
+    } else {
+      resetScore();
+      setReset(!reset);
+    }
   }
 
   useEffect(() => {
     fetchCatGifs(apiKey);
-  }, []); 
+  }, [reset]); 
 
   return (
     <div className="cardDeck">
@@ -37,7 +62,7 @@ export default function CardDeck({ incrementScore }) {
         <Card 
           key={index} 
           image={cat.gifUrl} 
-          handleClick={incrementScore}
+          handleClick={() => playTurn(cat)}
         />
       ))}
     </div>
