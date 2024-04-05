@@ -4,12 +4,12 @@ import '../styles/Card.css'
 export default function Card({ image, handleClick }) {
 
   return (
-    <div 
+    <img 
       className="card" 
       onClick={handleClick}
-      style={{backgroundImage: `url(${image})`}}
+      src={image}
     >
-    </div>
+    </img>
   )
 
   
